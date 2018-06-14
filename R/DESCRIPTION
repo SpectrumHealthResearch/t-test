@@ -1,0 +1,19 @@
+Package: stt
+Type: Package
+Title: Calculate Two Sample Student's t-test with Summary Statistics
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Paul", "Egeler", email = "paul.egeler@spectrumhealth.org", role = c("aut", "cre")),
+    person("Spectrum Health, Grand Rapids, MI", role = "cph"))
+Copyright: Spectrum Health, Grand Rapids, MI
+Description: Calculate two sample Student's t-test using summary statistics
+    rather than feeding it raw data, such as with the stats::t.test() function.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.4.0)
+Imports: stats
+Suggests: datasets
+URL: https://github.com/SpectrumHealthResearch/t-test
+BugReports: https://github.com/SpectrumHealthResearch/t-test/issues
+RoxygenNote: 6.0.1
