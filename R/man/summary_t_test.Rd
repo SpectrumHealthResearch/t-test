@@ -57,17 +57,6 @@ with(summary_chicks,
        )
      )
 
-## 	Two Sample t-test (satterthwaite)
-##
-## data:  summary statistics
-## t = -1.3246, df = 23.63, p-value = 0.09899
-## alternative hypothesis: true difference in means is less than 0
-## 95 percent confidence interval:
-##     -Inf 8.09536
-## sample estimates:
-## difference in means
-##           -27.67857
-
 # Compare with stats::t.test using raw data
 t.test(
   weight ~ feed,
@@ -75,17 +64,6 @@ t.test(
   feed \%in\% c("linseed", "soybean"),
   alternative = "less"
 )
-
-## 	Welch Two Sample t-test
-##
-## data:  weight by feed
-## t = -1.3246, df = 23.63, p-value = 0.09899
-## alternative hypothesis: true difference in means is less than 0
-## 95 percent confidence interval:
-##     -Inf 8.09536
-## sample estimates:
-## mean in group linseed mean in group soybean
-##              218.7500              246.4286
 
 }
 \references{
