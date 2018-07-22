@@ -68,7 +68,7 @@ with(summary_chicks,
 t.test(
   weight ~ feed,
   chickwts,
-  feed \%in\% c("linseed", "soybean"),
+  feed %in% c("linseed", "soybean"),
   alternative = "less"
 )
 
