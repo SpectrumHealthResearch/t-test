@@ -1,7 +1,7 @@
 Package: stt
 Type: Package
 Title: Calculate Two Sample Student's t-test with Summary Statistics
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Paul", "Egeler", email = "paul.egeler@spectrumhealth.org", role = c("aut", "cre")),
     person("Margaret", "Kline", email = "klinem@mail.gvsu.edu", role = "ctb"),
