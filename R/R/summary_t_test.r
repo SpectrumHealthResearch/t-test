@@ -47,7 +47,7 @@
 #' )
 #'
 #' @return An object of class \code{"htest"}.
-#' @author Paul W. Egeler, M.S., GStat
+#' @author Paul W. Egeler, M.S., GStat; Margaret M. Kline, M.S.
 #' @references
 #' P.V. Rao. (2007). \emph{Statistical Research Methods in the Life Sciences}.
 #' pp 136-140. ISBN-13: 978-0-495-41422-3. ISBN-10: 0-495-41422-0
@@ -67,17 +67,15 @@ summary_t_test <- function(
 
   #setting up different calculations based on method
   calculations <- list(
-
     "pooled" = quote({
 
-      pooled_sd <- sqrt( ((n1 - 1)*s1**2 + (n2-1)*s2**2) / (n1 + n2 - 2))
+      pooled_sd <- sqrt(((n1 - 1) * s1**2 + (n2-1) * s2**2) / (n1 + n2 - 2))
 
       se <- pooled_sd * sqrt(1 / n1 + 1 / n2)
 
       nu <- n1 + n2 - 2
 
     }),
-
     "satterthwaite" = quote({
 
       se <- sqrt(s1**2 / n1 + s2**2 / n2)
