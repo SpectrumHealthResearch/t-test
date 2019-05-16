@@ -4,8 +4,8 @@
 \alias{summary_t_test}
 \title{Run a \emph{t} test for comparing means using summary statistics}
 \usage{
-summary_t_test(x1, x2, s1, s2, n1, n2, alternative = c("two.sided", "less",
-  "greater"), method = c("pooled", "satterthwaite", "cochran"),
+summary_t_test(x1, x2, s1, s2, n1, n2, alternative = c("two.sided",
+  "less", "greater"), method = c("pooled", "satterthwaite", "cochran"),
   conf.level = 0.95)
 }
 \arguments{
@@ -68,8 +68,8 @@ t.test(
 }
 \references{
 P.V. Rao. (2007). \emph{Statistical Research Methods in the Life Sciences}.
-pp 139-140. ISBN-13: 978-0-495-41422-3. ISBN-10: 0-495-41422-0
+pp 136-140. ISBN-13: 978-0-495-41422-3. ISBN-10: 0-495-41422-0
 }
 \author{
-Paul W. Egeler, M.S., GStat
+Paul W. Egeler, M.S., GStat; Margaret M. Kline, M.S.
 }

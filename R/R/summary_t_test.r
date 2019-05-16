@@ -47,10 +47,10 @@
 #' )
 #'
 #' @return An object of class \code{"htest"}.
-#' @author Paul W. Egeler, M.S., GStat
+#' @author Paul W. Egeler, M.S., GStat; Margaret M. Kline, M.S.
 #' @references
 #' P.V. Rao. (2007). \emph{Statistical Research Methods in the Life Sciences}.
-#' pp 139-140. ISBN-13: 978-0-495-41422-3. ISBN-10: 0-495-41422-0
+#' pp 136-140. ISBN-13: 978-0-495-41422-3. ISBN-10: 0-495-41422-0
 #' @export
 summary_t_test <- function(
   x1,x2,s1,s2,n1,n2,
@@ -62,18 +62,37 @@ summary_t_test <- function(
   alternative <- match.arg(alternative)
   method <- match.arg(method)
 
-  if (method != "satterthwaite")
-    stop("Only 'satterthwaite' method available")
+  if (method == "cochran")
+    stop("Only 'satterthwaite' and 'pooled' methods available")
+
+  #setting up different calculations based on method
+  calculations <- list(
+    "pooled" = quote({
+
+      pooled_sd <- sqrt(((n1 - 1) * s1**2 + (n2-1) * s2**2) / (n1 + n2 - 2))
+
+      se <- pooled_sd * sqrt(1 / n1 + 1 / n2)
+
+      nu <- n1 + n2 - 2
+
+    }),
+    "satterthwaite" = quote({
+
+      se <- sqrt(s1**2 / n1 + s2**2 / n2)
+
+      k_inv <-
+        (s1**2 / n1 / (s1**2 / n1 + s2**2 / n2))**2 / (n1 - 1) +
+        (s2**2 / n2 / (s1**2 / n1 + s2**2 / n2))**2 / (n2 - 1)
+
+      # nu <- floor(1/k_inv)
+      nu <- 1/k_inv
+
+    })
+  )
 
   xd <- x1 - x2
-  se <- sqrt(s1**2 / n1 + s2**2 / n2)
 
-  k_inv <-
-    (s1**2 / n1 / (s1**2 / n1 + s2**2 / n2))**2 / (n1 - 1) +
-    (s2**2 / n2 / (s1**2 / n1 + s2**2 / n2))**2 / (n2 - 1)
-
-  # nu <- floor(1/k_inv)
-  nu <- 1/k_inv
+  eval(calculations[[method]])
 
   t_calc <- xd / se
 
