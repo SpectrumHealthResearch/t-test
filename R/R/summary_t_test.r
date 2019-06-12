@@ -128,6 +128,7 @@ summary_t_test <- function(
       p.value = p,
       conf.int = cint,
       estimate = xd,
+      stderr = se,
       null.value = {# Place-holder until users can enter their own null.value
         null.value <- 0
         names(null.value) <- "difference in means"
