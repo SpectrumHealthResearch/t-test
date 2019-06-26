@@ -121,25 +121,29 @@ summary_t_test <- function(
   attr(cint, "conf.level") <- conf.level
   names(xd) <- "difference in means"
 
-  structure(
+  out <- structure(
     list(
       statistic = t_calc,
       parameter = nu,
       p.value = p,
       conf.int = cint,
       estimate = xd,
-      stderr = se,
       null.value = {# Place-holder until users can enter their own null.value
         null.value <- 0
         names(null.value) <- "difference in means"
         null.value
         },
+      stderr = se,
       alternative = alternative,
       method = paste0("Two Sample t-test (", method, ")"),
       data.name = "summary statistics"
     ),
     class = "htest"
   )
+
+  if (getRversion() < "3.6.0") out$stderr <- NULL
+
+  out
 
 
 }
